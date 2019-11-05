@@ -1,0 +1,1561 @@
+"prefix": "-"
+"name": "Alpha"
+
+import java.io.*;
+import java.awt.*;
+import java.awt.datatransfer.*;
+import java.awt.event.*;
+
+
+public class ClipMe extends Frame 
+ implements ActionListener {
+
+  private TextField tf;
+  private TextArea ta;
+
+  public static void main(String[] args) {
+    new ClipMe().show();
+  }
+
+  public ClipMe() {
+
+    super("Clipping Example");
+    add(tf = new TextField("Welcome"), "North");
+    add(ta = new TextArea(), "Center");
+    MenuBar mb = new MenuBar();
+    mb.add(makeEditMenu());
+    setMenuBar(mb);
+    setSize(250, 250);
+   
+  }
+
+     
+  private Menu makeEditMenu() {
+
+    Menu editMenu = new Menu("Edit");
+    MenuItem mi = new MenuItem("Cut");
+    mi.addActionListener(this);
+    editMenu.add(mi);
+    mi = new MenuItem("Copy");
+    mi.addActionListener(this);
+    editMenu.add(mi);
+    mi = new MenuItem("Paste");
+    mi.addActionListener(this);
+    editMenu.add(mi);
+    mi = new MenuItem("Clear");
+    mi.addActionListener(this);
+    editMenu.add(mi);
+
+    return editMenu;
+
+  }
+
+
+  public void actionPerformed(ActionEvent evt) {
+
+    Clipboard clipboard = getToolkit().getSystemClipboard();
+    String cmd = evt.getActionCommand();
+    if (cmd.equalsIgnoreCase("copy")) {
+       StringSelection data = new StringSelection(tf.getText());
+       clipboard.setContents(data, data);
+    }
+    else if (cmd.equalsIgnoreCase("clear")) {
+      tf.setText("");
+    } 
+    else if (cmd.equalsIgnoreCase("paste")) {
+      Transferable clipData = clipboard.getContents(this);
+      String s;
+      try {
+        s = (String) (clipData.getTransferData(DataFlavor.stringFlavor));
+      } 
+      catch (Exception ex) {
+        s = ex.toString();
+      }
+      ta.setText(s);
+    }
+    else if (cmd.equalsIgnoreCase("cut")) {
+       StringSelection data = new StringSelection(tf.getText());
+       clipboard.setContents(data, data);
+       tf.setText("");
+    }
+
+  }
+
+}
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+public class DoPayroll {
+    public static void main(String args[])
+                                  throws IOException {
+        Scanner diskScanner =
+            new Scanner(new File("EmployeeInfo.txt"));
+        for (int empNum = 1; empNum <= 3; empNum++) {
+            payOneEmployee(diskScanner);
+        }
+        diskScanner.close();
+    }
+    static void payOneEmployee(Scanner aScanner) {
+        Employee anEmployee = new Employee();
+        anEmployee.setName(aScanner.nextLine());
+        anEmployee.setJobTitle(aScanner.nextLine());
+        anEmployee.cutCheck(aScanner.nextDouble());
+        aScanner.nextLine();
+    }/*
+ * The pattern in Listing 8-2
+ */
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+class SomeClassName {
+    public static void main(String args[]) 
+                                  throws IOException {
+        Scanner scannerName =
+            new Scanner(new File("SomeFileName"));
+        //Some code goes here
+        scannerName.nextInt();
+        scannerName.nextDouble();
+        scannerName.next();
+        scannerName.nextLine();
+        //Some code goes here
+        scannerName.close();
+    }
+/*
+ * The pattern in Listing 8-2
+ */
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+class SomeClassName {
+    public static void main(String args[]) 
+                                  throws IOException {
+        Scanner scannerName =
+            new Scanner(new File("SomeFileName"));
+        //Some code goes here
+        scannerName.nextInt();
+        scannerName.nextDouble();
+        scannerName.next();
+        scannerName.nextLine();
+        //Some code goes here
+        scannerName.close();
+    }
+<STYLE type="text;css">
+.calcBtn
+{
+font-weight : bold/
+width: 32px;
+height: 32px;
+}
+</style>
+<script language="JavaScript">
+function Calculator_OnClick(keyStr)
+{
+var resultsField = document.calculator.calcResults;
+switch (keyStr)
+{
+case "0":
+case "1":
+case "2":
+case "3":
+case "4":
+case "5":
+case "6":
+case "7":
+case "8":
+case "9":
+case "0":
+case ".":
+if ((this.lastOp==this.opClear) || (this.lastOp==this.opOperator))
+{
+resultsField.value = keyStr;
+}
+else
+{
+// ignore extra decimals
+if ((keyStr!=".") || (resultsField.value.indexOf(".")<0))
+{
+resultsField.value += keyStr;
+}
+}
+this.lastOp = this.opNumber;
+break;
+case "*":
+case "/":
+case "+":
+case "-":
+if (this.lastOp==this.opNumber)
+this.Calc();
+this.evalStr += resultsField.value + keyStr;
+this.lastOp = this.opOperator;
+break;
+case "=":
+this.Calc();
+this.lastOp = this.opClear;
+break;
+case "c":
+resultsField.value = "0";
+this.lastOp = this.opClear;
+break;
+default:
+alert("'" + keyStr + "' not recognized.");
+}
+}
+function Calculator_Calc()
+{
+var resultsField = document.calculator.calcResults;
+//alert("eval:"+this.evalStr+resultsField.value);
+resultsField.value = eval(this.evalStr+resultsField.value);
+this.evalStr = "";
+}
+function Calculator()
+{
+this.evalStr = "";
+this.opNumber = 0;
+this.opOperator = 1;
+this.opClear = 2;
+this.lastOp = this.opClear;
+this.OnClick = Calculator_OnClick;
+this.Calc = Calculator_Calc;
+}
+gCalculator = new Calculator();
+</script>
+-------------------------------------------------------------------------------
+<form name="calculator">
+<table border="2" cellpadding="4" cellspacing="0" bordercolor="#000000">
+<tr>
+<td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tr>
+<td colspan="4">
+<input type="text" name="calcResults" value="0" size="20" style="text-align: right"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" C " name="calclear" onclick="gCalculator.OnClick('c')"></td>
+<td></td>
+<td> </td>
+<td><input class="calcBtn" type="button" value=" = " name="calequal" onclick="gCalculator.OnClick('=')"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" 7 " name="cal7" onclick="gCalculator.OnClick('7')" ondblclick="gCalculator.OnClick('7')"></td>
+<td><input class="calcBtn" type="button" value=" 8 " name="cal8" onclick="gCalculator.OnClick('8')" ondblclick="gCalculator.OnClick('8')"> </td>
+<td><input class="calcBtn" type="button" value=" 9 " name="cal9" onclick="gCalculator.OnClick('9')" ondblclick="gCalculator.OnClick('9')"> </td>
+<td><input class="calcBtn" type="button" value=" / " name="caldiv" onclick="gCalculator.OnClick('/')"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" 4 " name="cal4" onclick="gCalculator.OnClick('4')" ondblclick="gCalculator.OnClick('4')"> </td>
+<td><input class="calcBtn" type="button" value=" 5 " name="cal5" onclick="gCalculator.OnClick('5')" ondblclick="gCalculator.OnClick('5')"> </td>
+<td><input class="calcBtn" type="button" value=" 6 " name="cal6" onclick="gCalculator.OnClick('6')" ondblclick="gCalculator.OnClick('6')"> </td>
+<td><input class="calcBtn" type="button" value=" * " name="calmul" onclick="gCalculator.OnClick('*')"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" 1 " name="cal1" onclick="gCalculator.OnClick('1')" ondblclick="gCalculator.OnClick('1')"> </td>
+<td><input class="calcBtn" type="button" value=" 2 " name="cal2" onclick="gCalculator.OnClick('2')" ondblclick="gCalculator.OnClick('2')"> </td>
+<td><input class="calcBtn" type="button" value=" 3 " name="cal3" onclick="gCalculator.OnClick('3')" ondblclick="gCalculator.OnClick('3')"> </td>
+<td><input class="calcBtn" type="button" value=" + " name="calplus" onclick="gCalculator.OnClick('+')"></td>
+</tr>
+<tr>
+<td> </td>
+<td><input class="calcBtn" type="button" value=" 0 " name="cal0" onclick="gCalculator.OnClick('0')" ondblclick="gCalculator.OnClick('0')"> </td>
+<td><input class="calcBtn" type="button" value=" . " name="caldec" onclick="gCalculator.OnClick('.')"></td>
+<td><input class="calcBtn" type="button" value=" - " name="calminus" onclick="gCalculator.OnClick('-')"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section {
+    display: block;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+main {
+    display: block;
+}
+body {
+    word-wrap: break-word;
+}
+body {
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    background-color: #fff;
+}
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+     public String  getMimeType()
+ public Class   getRepresentationClass()
+ public String  getHumanPresentableName()
+ public void    setHumanPresentableName(String humanPresentableName)
+ public boolean equals(DataFlavor dataFlavor)
+ public boolean isMimeTypeEqual(String mimeType)
+ public final boolean isMimeTypeEqual(DataFlavor dataFlavor)
+   element.style {
+}
+.page-template .site-main, .post-template .site-main {
+    padding-bottom: 4vw;
+    background: #fff;
+}
+.outer {
+    position: relative;
+    padding: 0 4vw;
+}
+.site-main {
+    z-index: 12;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    margin-top: 80px;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+user agent stylesheet
+main {
+    display: block;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+a, abbr, acronym, address, applet, article, aside, audio, big, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+body {
+    overflow-x: hidden;
+    color: var(--gray90);
+    font-family: "Lato", sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6em;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: "liga" on;
+    font-feature-settings: "liga1" on;
+}
+body {
+    line-height: 1;
+}
+body {
+    color: #0a0a23;
+    font-family: Lato,sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6em;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga1" on;
+}
+body {
+    line-height: 1;
+}
+:root {
+    --dark-blue: #002ead;
+    --theme-color: #0a0a23;
+    --gray90: #0a0a23;
+    --gray85: #1b1b32;
+    --gray80: #2a2a40;
+    --gray75: #3b3b4f;
+    --gray15: #d0d0d5;
+    --gray10: #dfdfe2;
+    --gray05: #eeeef0;
+    --gray00: #fff;
+    --header-height: 38px;
+}
+html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-size: 62.5%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html {
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+html {
+    overflow-y: scroll;
+    font-size: 62.5%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html {
+    box-sizing: border-box;
+    font-family: Lato,sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+::selection {
+    text-shadow: none;
+    background: var(--dark-blue);
+    color: var(--gray00);
+}
+::selection {
+    text-shadow: none;
+    background: #002ead;
+    color: #fff;
+}
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.Toolkit;
+import java.io.*;
+
+public final class TextTransfer implements ClipboardOwner {
+
+  /** Simple test harness. */
+  public static void main(String...  args){
+    TextTransfer textTransfer = new TextTransfer();
+
+    //display what is currently on the clipboard
+    log("Clipboard contains:" + textTransfer.getClipboardContents());
+
+    //change the contents and then re-display
+    textTransfer.setClipboardContents("blah, blah, blah");
+    log("Clipboard contains:" + textTransfer.getClipboardContents());
+  }
+
+   /**
+   * Empty implementation of the ClipboardOwner interface.
+   */
+   @Override public void lostOwnership(Clipboard clipboard, Transferable contents){
+     //do nothing
+   }
+
+  /**
+  * Place a String on the clipboard, and make this class the
+  * owner of the Clipboard's contents.
+  */
+  public void setClipboardContents(String string){
+    StringSelection stringSelection = new StringSelection(string);
+    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    clipboard.setContents(stringSelection, this);
+  }
+
+  /**
+  * Get the String residing on the clipboard.
+  *
+  * @return any text found on the Clipboard; if none found, return an
+  * empty String.
+  */
+  public String getClipboardContents() {
+    String result = "";
+    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    //odd: the Object param of getContents is not currently used
+    Transferable contents = clipboard.getContents(null);
+    boolean hasTransferableText =
+      (contents != null) &&
+      contents.isDataFlavorSupported(DataFlavor.stringFlavor)
+    ;
+    if (hasTransferableText) {
+      try {
+        result = (String)contents.getTransferData(DataFlavor.stringFlavor);
+      }
+      catch (UnsupportedFlavorException | IOException ex){
+        System.out.println(ex);
+        ex.printStackTrace();
+      }
+    }
+    return result;
+  }
+  
+  private static void log(String msg) {
+    System.out.println(msg);
+  }
+} 
+:
+>java -cp . TextTransfer
+Clipboard contains:Java 
+
+Clipboard contains:
+
+
+>
+Clipboard clipboard=Toolkit
+   .getDefaultToolkit().getSystemClipboard();
+System clipboard
+Toolkit toolkit=Toolkit.getDefaultToolkit();Toolkit toolkit=Toolkit.getDefaultToolkit();
+Toolkit toolkit=Toolkit.getDefaultToolkit();
+Toolkit toolkit=Toolkit.getDefaultToolkit();
+void setContents(Transferable contents,
+   ClipboardOwner owner)
+Transferable getContents(Object requestor)
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/widget_iframe.2d991e3dfc9abb2549972ce8b64c5d85.html?origin=https%3A%2F%2Fwww.developer.com" title="Twitter settings iframe" style="display: none;"></iframe>
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+a: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625ms
+ :w```~~Alpha321275
+   83213.43424.4.2.4432343423493483492343990200499992+=293920382942104Alpha
+   "token"= :w```~~Alpha321275
+   83213.43424.4.2.4432343423493483492343990200499992+=293920382942104Alpha :w```~~Alpha321275
+   83213.43424.4.2.4432343423493483492343990200499992+=293920382942104Alpha :w```~~Alpha321275
+   83213.43424.4.2.4432343423493483492343990200499992+=293920382942104Alpha :w```~~Alpha321275
+   83213.43424.4.2.4432343423493483492343990200499992+=293920382942104Alpha
+   "prefix": "-"
+"name": "Alpha"
+
+import java.io.*;
+import java.awt.*;
+import java.awt.datatransfer.*;
+import java.awt.event.*;
+
+
+public class ClipMe extends Frame 
+ implements ActionListener {
+
+  private TextField tf;
+  private TextArea ta;
+
+  public static void main(String[] args) {
+    new ClipMe().show();
+  }
+
+  public ClipMe() {
+
+    super("Clipping Example");
+    add(tf = new TextField("Welcome"), "North");
+    add(ta = new TextArea(), "Center");
+    MenuBar mb = new MenuBar();
+    mb.add(makeEditMenu());
+    setMenuBar(mb);
+    setSize(250, 250);
+   
+  }
+
+     
+  private Menu makeEditMenu() {
+
+    Menu editMenu = new Menu("Edit");
+    MenuItem mi = new MenuItem("Cut");
+    mi.addActionListener(this);
+    editMenu.add(mi);
+    mi = new MenuItem("Copy");
+    mi.addActionListener(this);
+    editMenu.add(mi);
+    mi = new MenuItem("Paste");
+    mi.addActionListener(this);
+    editMenu.add(mi);
+    mi = new MenuItem("Clear");
+    mi.addActionListener(this);
+    editMenu.add(mi);
+
+    return editMenu;
+
+  }
+
+
+  public void actionPerformed(ActionEvent evt) {
+
+    Clipboard clipboard = getToolkit().getSystemClipboard();
+    String cmd = evt.getActionCommand();
+    if (cmd.equalsIgnoreCase("copy")) {
+       StringSelection data = new StringSelection(tf.getText());
+       clipboard.setContents(data, data);
+    }
+    else if (cmd.equalsIgnoreCase("clear")) {
+      tf.setText("");
+    } 
+    else if (cmd.equalsIgnoreCase("paste")) {
+      Transferable clipData = clipboard.getContents(this);
+      String s;
+      try {
+        s = (String) (clipData.getTransferData(DataFlavor.stringFlavor));
+      } 
+      catch (Exception ex) {
+        s = ex.toString();
+      }
+      ta.setText(s);
+    }
+    else if (cmd.equalsIgnoreCase("cut")) {
+       StringSelection data = new StringSelection(tf.getText());
+       clipboard.setContents(data, data);
+       tf.setText("");
+    }
+
+  }
+
+}
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+public class DoPayroll {
+    public static void main(String args[])
+                                  throws IOException {
+        Scanner diskScanner =
+            new Scanner(new File("EmployeeInfo.txt"));
+        for (int empNum = 1; empNum <= 3; empNum++) {
+            payOneEmployee(diskScanner);
+        }
+        diskScanner.close();
+    }
+    static void payOneEmployee(Scanner aScanner) {
+        Employee anEmployee = new Employee();
+        anEmployee.setName(aScanner.nextLine());
+        anEmployee.setJobTitle(aScanner.nextLine());
+        anEmployee.cutCheck(aScanner.nextDouble());
+        aScanner.nextLine();
+    }/*
+ * The pattern in Listing 8-2
+ */
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+class SomeClassName {
+    public static void main(String args[]) 
+                                  throws IOException {
+        Scanner scannerName =
+            new Scanner(new File("SomeFileName"));
+        //Some code goes here
+        scannerName.nextInt();
+        scannerName.nextDouble();
+        scannerName.next();
+        scannerName.nextLine();
+        //Some code goes here
+        scannerName.close();
+    }
+/*
+ * The pattern in Listing 8-2
+ */
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+class SomeClassName {
+    public static void main(String args[]) 
+                                  throws IOException {
+        Scanner scannerName =
+            new Scanner(new File("SomeFileName"));
+        //Some code goes here
+        scannerName.nextInt();
+        scannerName.nextDouble();
+        scannerName.next();
+        scannerName.nextLine();
+        //Some code goes here
+        scannerName.close();
+    }
+<STYLE type="text;css">
+.calcBtn
+{
+font-weight : bold/
+width: 32px;
+height: 32px;
+}
+</style>
+<script language="JavaScript">
+function Calculator_OnClick(keyStr)
+{
+var resultsField = document.calculator.calcResults;
+switch (keyStr)
+{
+case "0":
+case "1":
+case "2":
+case "3":
+case "4":
+case "5":
+case "6":
+case "7":
+case "8":
+case "9":
+case "0":
+case ".":
+if ((this.lastOp==this.opClear) || (this.lastOp==this.opOperator))
+{
+resultsField.value = keyStr;
+}
+else
+{
+// ignore extra decimals
+if ((keyStr!=".") || (resultsField.value.indexOf(".")<0))
+{
+resultsField.value += keyStr;
+}
+}
+this.lastOp = this.opNumber;
+break;
+case "*":
+case "/":
+case "+":
+case "-":
+if (this.lastOp==this.opNumber)
+this.Calc();
+this.evalStr += resultsField.value + keyStr;
+this.lastOp = this.opOperator;
+break;
+case "=":
+this.Calc();
+this.lastOp = this.opClear;
+break;
+case "c":
+resultsField.value = "0";
+this.lastOp = this.opClear;
+break;
+default:
+alert("'" + keyStr + "' not recognized.");
+}
+}
+function Calculator_Calc()
+{
+var resultsField = document.calculator.calcResults;
+//alert("eval:"+this.evalStr+resultsField.value);
+resultsField.value = eval(this.evalStr+resultsField.value);
+this.evalStr = "";
+}
+function Calculator()
+{
+this.evalStr = "";
+this.opNumber = 0;
+this.opOperator = 1;
+this.opClear = 2;
+this.lastOp = this.opClear;
+this.OnClick = Calculator_OnClick;
+this.Calc = Calculator_Calc;
+}
+gCalculator = new Calculator();
+</script>
+-------------------------------------------------------------------------------
+<form name="calculator">
+<table border="2" cellpadding="4" cellspacing="0" bordercolor="#000000">
+<tr>
+<td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tr>
+<td colspan="4">
+<input type="text" name="calcResults" value="0" size="20" style="text-align: right"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" C " name="calclear" onclick="gCalculator.OnClick('c')"></td>
+<td></td>
+<td> </td>
+<td><input class="calcBtn" type="button" value=" = " name="calequal" onclick="gCalculator.OnClick('=')"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" 7 " name="cal7" onclick="gCalculator.OnClick('7')" ondblclick="gCalculator.OnClick('7')"></td>
+<td><input class="calcBtn" type="button" value=" 8 " name="cal8" onclick="gCalculator.OnClick('8')" ondblclick="gCalculator.OnClick('8')"> </td>
+<td><input class="calcBtn" type="button" value=" 9 " name="cal9" onclick="gCalculator.OnClick('9')" ondblclick="gCalculator.OnClick('9')"> </td>
+<td><input class="calcBtn" type="button" value=" / " name="caldiv" onclick="gCalculator.OnClick('/')"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" 4 " name="cal4" onclick="gCalculator.OnClick('4')" ondblclick="gCalculator.OnClick('4')"> </td>
+<td><input class="calcBtn" type="button" value=" 5 " name="cal5" onclick="gCalculator.OnClick('5')" ondblclick="gCalculator.OnClick('5')"> </td>
+<td><input class="calcBtn" type="button" value=" 6 " name="cal6" onclick="gCalculator.OnClick('6')" ondblclick="gCalculator.OnClick('6')"> </td>
+<td><input class="calcBtn" type="button" value=" * " name="calmul" onclick="gCalculator.OnClick('*')"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" 1 " name="cal1" onclick="gCalculator.OnClick('1')" ondblclick="gCalculator.OnClick('1')"> </td>
+<td><input class="calcBtn" type="button" value=" 2 " name="cal2" onclick="gCalculator.OnClick('2')" ondblclick="gCalculator.OnClick('2')"> </td>
+<td><input class="calcBtn" type="button" value=" 3 " name="cal3" onclick="gCalculator.OnClick('3')" ondblclick="gCalculator.OnClick('3')"> </td>
+<td><input class="calcBtn" type="button" value=" + " name="calplus" onclick="gCalculator.OnClick('+')"></td>
+</tr>
+<tr>
+<td> </td>
+<td><input class="calcBtn" type="button" value=" 0 " name="cal0" onclick="gCalculator.OnClick('0')" ondblclick="gCalculator.OnClick('0')"> </td>
+<td><input class="calcBtn" type="button" value=" . " name="caldec" onclick="gCalculator.OnClick('.')"></td>
+<td><input class="calcBtn" type="button" value=" - " name="calminus" onclick="gCalculator.OnClick('-')"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</form>
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section {
+    display: block;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+main {
+    display: block;
+}
+body {
+    word-wrap: break-word;
+}
+body {
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    background-color: #fff;
+}
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+     public String  getMimeType()
+ public Class   getRepresentationClass()
+ public String  getHumanPresentableName()
+ public void    setHumanPresentableName(String humanPresentableName)
+ public boolean equals(DataFlavor dataFlavor)
+ public boolean isMimeTypeEqual(String mimeType)
+ public final boolean isMimeTypeEqual(DataFlavor dataFlavor)
+   element.style {
+}
+.page-template .site-main, .post-template .site-main {
+    padding-bottom: 4vw;
+    background: #fff;
+}
+.outer {
+    position: relative;
+    padding: 0 4vw;
+}
+.site-main {
+    z-index: 12;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    margin-top: 80px;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+user agent stylesheet
+main {
+    display: block;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+a, abbr, acronym, address, applet, article, aside, audio, big, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+body {
+    overflow-x: hidden;
+    color: var(--gray90);
+    font-family: "Lato", sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6em;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: "liga" on;
+    font-feature-settings: "liga1" on;
+}
+body {
+    line-height: 1;
+}
+body {
+    color: #0a0a23;
+    font-family: Lato,sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6em;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga1" on;
+}
+body {
+    line-height: 1;
+}
+:root {
+    --dark-blue: #002ead;
+    --theme-color: #0a0a23;
+    --gray90: #0a0a23;
+    --gray85: #1b1b32;
+    --gray80: #2a2a40;
+    --gray75: #3b3b4f;
+    --gray15: #d0d0d5;
+    --gray10: #dfdfe2;
+    --gray05: #eeeef0;
+    --gray00: #fff;
+    --header-height: 38px;
+}
+html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-size: 62.5%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html {
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+html {
+    overflow-y: scroll;
+    font-size: 62.5%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html {
+    box-sizing: border-box;
+    font-family: Lato,sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+::selection {
+    text-shadow: none;
+    background: var(--dark-blue);
+    color: var(--gray00);
+}
+::selection {
+    text-shadow: none;
+    background: #002ead;
+    color: #fff;
+}
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.Toolkit;
+import java.io.*;
+
+public final class TextTransfer implements ClipboardOwner {
+
+  /** Simple test harness. */
+  public static void main(String...  args){
+    TextTransfer textTransfer = new TextTransfer();
+
+    //display what is currently on the clipboard
+    log("Clipboard contains:" + textTransfer.getClipboardContents());
+
+    //change the contents and then re-display
+    textTransfer.setClipboardContents("blah, blah, blah");
+    log("Clipboard contains:" + textTransfer.getClipboardContents());
+  }
+
+   /**
+   * Empty implementation of the ClipboardOwner interface.
+   */
+   @Override public void lostOwnership(Clipboard clipboard, Transferable contents){
+     //do nothing
+   }
+
+  /**
+  * Place a String on the clipboard, and make this class the
+  * owner of the Clipboard's contents.
+  */
+  public void setClipboardContents(String string){
+    StringSelection stringSelection = new StringSelection(string);
+    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    clipboard.setContents(stringSelection, this);
+  }
+
+  /**
+  * Get the String residing on the clipboard.
+  *
+  * @return any text found on the Clipboard; if none found, return an
+  * empty String.
+  */
+  public String getClipboardContents() {
+    String result = "";
+    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    //odd: the Object param of getContents is not currently used
+    Transferable contents = clipboard.getContents(null);
+    boolean hasTransferableText =
+      (contents != null) &&
+      contents.isDataFlavorSupported(DataFlavor.stringFlavor)
+    ;
+    if (hasTransferableText) {
+      try {
+        result = (String)contents.getTransferData(DataFlavor.stringFlavor);
+      }
+      catch (UnsupportedFlavorException | IOException ex){
+        System.out.println(ex);
+        ex.printStackTrace();
+      }
+    }
+    return result;
+  }
+  
+  private static void log(String msg) {
+    System.out.println(msg);
+  }
+} 
+:
+>java -cp . TextTransfer
+Clipboard contains:Java 
+
+Clipboard contains:
+
+
+>
+Clipboard clipboard=Toolkit
+   .getDefaultToolkit().getSystemClipboard();
+System clipboard
+Toolkit toolkit=Toolkit.getDefaultToolkit();Toolkit toolkit=Toolkit.getDefaultToolkit();
+Toolkit toolkit=Toolkit.getDefaultToolkit();
+Toolkit toolkit=Toolkit.getDefaultToolkit();
+void setContents(Transferable contents,
+   ClipboardOwner owner)
+Transferable getContents(Object requestor)
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/widget_iframe.2d991e3dfc9abb2549972ce8b64c5d85.html?origin=https%3A%2F%2Fwww.developer.com" title="Twitter settings iframe" style="display: none;"></iframe>
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+a: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625ms
+ :w```~~Alpha321275
+   83213.43424.4.2.4432343423493483492343990200499992+=293920382942104Alpha
+   "token"= :w```~~Alpha321275
+   83213.43424.4.2.4432343423493483492343990200499992+=293920382942104Alpha :w```~~Alpha321275
+   83213.43424.4.2.4432343423493483492343990200499992+=293920382942104Alpha :w```~~Alpha321275
+   83213.43424.4.2.4432343423493483492343990200499992+=293920382942104Alpha :w```~~Alpha321275
+   83213.43424.4.2.4432343423493483492343990200499992+=293920382942104Alpha
+   
+    //display what is currently on the clipboard
+    log("Clipboard contains:" + textTransfer.getClipboardContents());
+
+    //change the contents and then re-display
+    textTransfer.setClipboardContents("blah, blah, blah");
+    log("Clipboard contains:" + textTransfer.getClipboardContents());
+  }
+
+   /**
+   * Empty implementation of the ClipboardOwner interface.
+   */
+   @Override public void lostOwnership(Clipboard clipboard, Transferable contents){
+     //do nothing
+   }
+
+  /**
+  * Place a String on the clipboard, and make this class the
+  * owner of the Clipboard's contents.
+  */
+  public void setClipboardContents(String string){
+    StringSelection stringSelection = new StringSelection(string);
+    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    clipboard.setContents(stringSelection, this);
+  }
+
+  /**
+  * Get the String residing on the clipboard.
+  *
+  * @return any text found on the Clipboard; if none found, return an
+  * empty String.
+  */
+  public String getClipboardContents() {
+    String result = "";
+    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+    //odd: the Object param of getContents is not currently used
+    Transferable contents = clipboard.getContents(null);
+    boolean hasTransferableText =
+      (contents != null) &&
+      contents.isDataFlavorSupported(DataFlavor.stringFlavor)
+    ;
+    if (hasTransferableText) {
+      try {
+        result = (String)contents.getTransferData(DataFlavor.stringFlavor);
+      }
+      catch (UnsupportedFlavorException | IOException ex){
+        System.out.println(ex);
+        ex.printStackTrace();
+      }
+    }
+    return result;
+  }
+  
+  private static void log(String msg) {
+    System.out.println(msg);
+  }
+} 
+:
+>java -cp . TextTransfer
+Clipboard contains:Java 
+
+Clipboard contains:
+
+
+>
+Clipboard clipboard=Toolkit
+   .getDefaultToolkit().getSystemClipboard();
+System clipboard
+Toolkit toolkit=Toolkit.getDefaultToolkit();Toolkit toolkit=Toolkit.getDefaultToolkit();
+Toolkit toolkit=Toolkit.getDefaultToolkit();
+Toolkit toolkit=Toolkit.getDefaultToolkit();
+void setContents(Transferable contents,
+   ClipboardOwner owner)
+Transferable getContents(Object requestor)
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/widget_iframe.2d991e3dfc9abb2549972ce8b64c5d85.html?origin=https%3A%2F%2Fwww.developer.com" title="Twitter settings iframe" style="display: none;"></iframe>
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+<iframe id="kx-proxy-JdOfGRZW" src="https://cdn.krxd.net/partnerjs/xdi/proxy.3d2100fd7107262ecb55ce6847f01fa5.html#!kxcid=JdOfGRZW&amp;kxt=https%3A%2F%2Fwww.developer.com&amp;kxcl=cdn&amp;kxp=" style="display: none; visibility: hidden; height: 0; width: 0;"></iframe>
+a: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625msa: 0.011962890625ms
+ :w```~~Alpha321275
+ HPEN hhi = CreatePen(0, 0, MAKE_PALETTERGB(crHighlight));
+HPEN hsh = CreatePen(0, 0, MAKE_PALETTERGB(crShadow));
+...
+if(fNormal)
+  hOld = SelectObject(hdc, hhi);
+else
+  hOld = SelectObject(hdc, hhi);
+...HPEN hhi = CreatePen(0, 0, MAKE_PALETTERGB(crHighlight));
+HPEN hsh = CreatePen(0, 0, MAKE_PALETTERGB(crShadow));
+...
+if(fNormal)
+  hOld = SelectObject(hdc, hhi);
+else
+  hOld = SelectObject(hdc, hhi);
+...HPEN hhi = CreatePen(0, 0, MAKE_PALETTERGB(crHighlight));
+HPEN hsh = CreatePen(0, 0, MAKE_PALETTERGB(crShadow));
+...
+if(fNormal)
+  hOld = SelectObject(hdc, hhi);
+else
+  hOld = SelectObject(hdc, hhi);
+...fhead[11] = '\0';
+fhead[12] = '\0';
+fhead[13] = '\0';
+fhead[13] = '\0';fhead[11] = '\0';
+fhead[12] = '\0';
+fhead[13] = '\0';
+fhead[13] = '\0';fhead[11] = '\0';
+fhead[12] = '\0';
+fhead[13] = '\0';
+fhead[13] = '\0';
+4291=yaxis"-38=+Alpha][2010021]"Token"=fhead[11] = '\0';
+fhead[12] = '\0';
+fhead[13] = '\0';
+fhead[13] = '\0';
+element.style {
+}
+@media screen and (max-width: 1023px)
+<style>
+.reset-3c756112--card-b6ff88e2--whiteCard-fff091a4--card-5e635eb5--S400Vertical-a18add7e {
+    flex-wrap: wrap;
+    -webkit-box-lines: multiple;
+}
+<style>
+.reset-3c756112--card-b6ff88e2--whiteCard-fff091a4--card-5e635eb5--S400Vertical-a18add7e {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    color: #242A31;
+    border: 1px solid #E6ECF1;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    position: relative;
+    align-self: stretch;
+    box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+    margin-top: 32px;
+    transition: border 250ms ease;
+    align-items: center;
+    justify-self: stretch;
+    border-radius: 3px;
+    margin-bottom: 32px;
+    flex-direction: row;
+    -moz-transition: border 250ms ease;
+    text-decoration: none;
+    background-color: #FFFFFF;
+    -webkit-box-align: center;
+    -ms-grid-row-align: stretch;
+    -webkit-box-orient: horizontal;
+    -webkit-transition: border 250ms ease;
+    -ms-grid-column-align: stretch;
+    -webkit-box-direction: normal;
+}
+<style>
+*, *:before, *:after {
+    outline: none;
+    box-sizing: inherit;
+}
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+Style Attribute {
+    outline: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+<style>
+.reset-3c756112--pageBody-a91db4ac {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    position: relative;
+    font-size: 16px;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+<style>
+.reset-3c756112--wholeContent-2277d1e8 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex: 1 1 auto;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    max-width: 100%;
+    min-width: 0;
+    background: #fff;
+    flex-direction: column;
+    padding-bottom: 64px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+<style>
+.reset-3c756112--wholeContent-9fc567d4 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    position: relative;
+    min-height: 100%;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+<style>
+.reset-3c756112--bodyContent-2f98451b {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex: 1;
+    color: #3B454E;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    padding: 0;
+}
+<style>
+.reset-3c756112--body-68cac36c {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    color: #242A31;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    background: #F5F7F9;
+    min-height: 100vh;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+<style>
+html, body {
+    color: #242A31;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    background: #F5F7F9;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    line-height: 1em;
+    font-smoothing: antialiased;
+    text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+}
+<style>
+*, *:before, *:after {
+    outline: none;
+    box-sizing: inherit;
+}
+<style>
+*, *:before, *:after {
+    outline: none;
+    box-sizing: inherit;
+}
+Sticky-f53dafd2 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex: 1 1 auto;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    position: relative;
+    min-width: 0;
+}
+<style>
+*, *:before, *:after {
+    outline: none;
+    box-sizing: inherit;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+<style>
+.reset-3c756112--wholeContent-2277d1e8 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex: 1 1 auto;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    max-width: 100%;
+    min-width: 0;
+    background: #fff;
+    flex-direction: column;
+    padding-bottom: 64px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+<style>
+.reset-3c756112--wholeContent-9fc567d4 {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    position: relative;
+    min-height: 100%;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+<style>
+.reset-3c756112--bodyContent-2f98451b {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    flex: 1;
+    color: #3B454E;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    padding: 0;
+}
+<style>
+.reset-3c756112--body-68cac36c {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    color: #242A31;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    background: #F5F7F9;
+    min-height: 100vh;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+}
+<style>
+html, body {
+    color: #242A31;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    background: #F5F7F9;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    line-height: 1em;
+    font-smoothing: antialiased;
+    text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+}
+<style>
+*, *:before, *:after {
+    outline: none;
+    box-sizing: inherit;
+}
+<style>
+*, *:before, *:after {
+    outline: none;
+    box-sizing: inherit;
+}
+  hat.parent = player.parent
+    MoveObjectHere (hat)
+    }
+<style>
+html, body {
+    color: #242A31;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    background: #F5F7F9;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    line-height: 1em;
+    font-smoothing: antialiased;
+    text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;}
+<style>
+html, body {
+    color: #242A31;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    background: #F5F7F9;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    line-height: 1em;
+    font-smoothing: antialiased;
+    text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    <script type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({flush: true});
+</script>
+element.style {
+}
+user agent stylesheet
+script {
+    display: none;
+}
+body {
+    background-color: #f7f7f7;
+    font-family: 'Raleway',sans-serif;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+}
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    height: 50px;
+    outline-offset: -2px;
+    outline: 2px solid #fff;
+    -webkit-border-radius: 4px;
+    border: 2px solid #fff;
+}
+::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+    -webkit-border-radius: 0;
+}
+"Alpha"="02199992120022113382232913481204734386573121824.23928419748212-184092749132740283084793294632047208430000000000000000";--~~Bot
