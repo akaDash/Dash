@@ -1640,3 +1640,370 @@ html {
 *, ::after, ::before {
     box-sizing: border-box;
 }
+
+    Clipboard clipboard = getToolkit().getSystemClipboard();
+    String cmd = evt.getActionCommand();
+    if (cmd.equalsIgnoreCase("copy")) {
+       StringSelection data = new StringSelection(tf.getText());
+       clipboard.setContents(data, data);
+    }
+    else if (cmd.equalsIgnoreCase("clear")) {
+      tf.setText("");
+    } 
+    else if (cmd.equalsIgnoreCase("paste")) {
+      Transferable clipData = clipboard.getContents(this);
+      String s;
+      try {
+        s = (String) (clipData.getTransferData(DataFlavor.stringFlavor));
+      } 
+      catch (Exception ex) {
+        s = ex.toString();
+      }
+      ta.setText(s);
+    }
+    else if (cmd.equalsIgnoreCase("cut")) {
+       StringSelection data = new StringSelection(tf.getText());
+       clipboard.setContents(data, data);
+       tf.setText("");
+    }
+
+  }
+
+}
+
+    Clipboard clipboard = getToolkit().getSystemClipboard();
+    String cmd = evt.getActionCommand();
+    if (cmd.equalsIgnoreCase("copy")) {
+       StringSelection data = new StringSelection(tf.getText());
+       clipboard.setContents(data, data);
+    }
+    else if (cmd.equalsIgnoreCase("clear")) {
+      tf.setText("");
+    } 
+    else if (cmd.equalsIgnoreCase("paste")) {
+      Transferable clipData = clipboard.getContents(this);
+      String s;
+      try {
+        s = (String) (clipData.getTransferData(DataFlavor.stringFlavor));
+      } 
+      catch (Exception ex) {
+        s = ex.toString();
+      }
+      ta.setText(s);
+    }
+    else if (cmd.equalsIgnoreCase("cut")) {
+       StringSelection data = new StringSelection(tf.getText());
+       clipboard.setContents(data, data);
+       tf.setText("");
+    }
+
+  }
+
+}
+
+default:
+alert("'" + keyStr + "' not recognized.");
+}
+}
+function Calculator_Calc()
+{
+var resultsField = document.calculator.calcResults;
+//alert("eval:"+this.evalStr+resultsField.value);
+resultsField.value = eval(this.evalStr+resultsField.value);
+this.evalStr = "";
+}
+function Calculator()
+{
+this.evalStr = "";
+this.opNumber = 0;
+this.opOperator = 1;
+this.opClear = 2;
+this.lastOp = this.opClear;
+this.OnClick = Calculator_OnClick;
+this.Calc = Calculator_Calc;
+}
+gCalculator = new Calculator();
+</script>
+-------------------------------------------------------------------------------
+<form name="calculator">
+<table border="2" cellpadding="4" cellspacing="0" bordercolor="#000000">
+<tr>
+<td>
+<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<tr>
+<td colspan="4">
+<input type="text" name="calcResults" value="0" size="20" style="text-align: right"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" C " name="calclear" onclick="gCalculator.OnClick('c')"></td>
+<td></td>
+<td> </td>
+<td><input class="calcBtn" type="button" value=" = " name="calequal" onclick="gCalculator.OnClick('=')"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" 7 " name="cal7" onclick="gCalculator.OnClick('7')" ondblclick="gCalculator.OnClick('7')"></td>
+<td><input class="calcBtn" type="button" value=" 8 " name="cal8" onclick="gCalculator.OnClick('8')" ondblclick="gCalculator.OnClick('8')"> </td>
+<td><input class="calcBtn" type="button" value=" 9 " name="cal9" onclick="gCalculator.OnClick('9')" ondblclick="gCalculator.OnClick('9')"> </td>
+<td><input class="calcBtn" type="button" value=" / " name="caldiv" onclick="gCalculator.OnClick('/')"></td>
+</tr>
+<tr>
+<td><input class="calcBtn" type="button" value=" 4 " name="cal4" onclick="gCalculator.OnClick('4')" ondblclick="gCalculator.OnClick('4')"> </td>
+<td><input class="calcBtn" type="button" value=" 5 " name="cal5" onclick="gCalculator.OnClick('5')" ondblclick="gCalculator.OnClick('5')"> </td>
+<td><input class="calcBtn" type="button" value=" 6 " name="cal6" onclick="gCalculator.OnClick('6')" ondblclick="gCalculator.OnClick('6')"> </td>
+<td><input class="calcBtn" type="button" value=" * " name="calmul" onclick="gCalculator.OnClick('*')"></td>
+</tr>
+13133999""~~~~0dy=x 
+element.style {
+}
+img.yt-img-shadow {
+    display: block;
+    margin-left: var(--yt-img-margin-left, auto);
+    margin-right: var(--yt-img-margin-right, auto);
+    max-height: var(--yt-img-max-height, none);
+    max-width: var(--yt-img-max-width, 100%);
+    border-radius: var(--yt-img-border-radius, none);
+}
+canvas, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, embed, fieldset, font, form, h1, h2, h3, h4, h5, h6, hr, i, iframe, img, ins, kbd, label, legend, li, menu, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+img[Attributes Style] {
+    width: 210px;
+}
+.yt-simple-endpoint {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--yt-endpoint-color, var(--yt-spec-text-primary));
+}
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+#items.yt-horizontal-list-renderer > *.yt-horizontal-list-renderer {
+    padding-right: 4px;
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
+}
+#items.yt-horizontal-list-renderer {
+    margin-bottom: var(--ytd-horizontal-list-margin-bottom, 24px);
+    transition-duration: 0.15s;
+    transition-timing-function: cubic-bezier(0.05, 0.0, 0.0, 1);
+    will-change: transform;
+    display: inline-block;
+    white-space: nowrap;
+}
+Style Attribute {
+    --ytd-thumbnail-height: 302px;
+}
+ytd-shelf-renderer {
+    --yt-icon-disabled-color: var(--yt-icon-active-color);
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+#page-manager.ytd-app {
+    --ytd-toolbar-offset: var(--ytd-masthead-height, 56px);
+    overflow-x: auto;
+    margin-top: var(--ytd-masthead-height, 56px);
+    display: flex;
+    -ms-flex: 1 1 0.000000001px;
+    -webkit-flex: 1;
+    flex: 1;
+    -webkit-flex-basis: 0.000000001px;
+    flex-basis: 0.000000001px;
+}
+ytd-app {
+    --app-drawer-width: 240px;
+    --app-drawer-content-container_-_background-color: var(--yt-main-app-background);
+    background: var(--yt-main-app-background);
+    display: block;
+    left: 0;
+    min-height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+Style Attribute {
+    font-size: 10px;
+    font-family: Roboto, Arial, sans-serif;
+}
+html:not(.style-scope) {
+    --paper-input-container-shared-input-style_-_color: var(--paper-input-container-input-color, var(--primary-text-color));
+    --paper-input-container-shared-input-style_-_vertical-align: var(--paper-input-container-input-align, bottom);
+    --paper-input-container-shared-input-style_-_font-family: var(--paper-font-subhead_-_font-family);
+    --paper-input-container-shared-input-style_-_-webkit-font-smoothing: var(--paper-font-subhead_-_-webkit-font-smoothing);
+    --paper-input-container-shared-input-style_-_font-size: var(--paper-font-subhead_-_font-size);
+    --paper-input-container-shared-input-style_-_font-weight: var(--paper-font-subhead_-_font-weight);
+    --paper-input-container-shared-input-style_-_line-height: var(--paper-font-subhead_-_line-height);
+}
+html:not(.style-scope) {
+    --paper-font-common-base_-_font-family: 'Roboto', 'Noto', sans-serif;
+    --paper-font-common-base_-_-webkit-font-smoothing: antialiased;
+    --paper-font-title_-_font-family: var(--paper-font-common-base_-_font-family);
+    --paper-font-title_-_-webkit-font-smoothing: var(--paper-font-common-base_-_-webkit-font-smoothing);
+    --paper-font-title_-_white-space: nowrap;
+    --paper-font-title_-_overflow: hidden;
+    --paper-font-title_-_text-overflow: ellipsis;
+    --paper-font-title_-_font-size: 20px;
+    --paper-font-title_-_font-weight: 500;
+    --paper-font-title_-_line-height: 28px;
+    --paper-font-subhead_-_font-family: var(--paper-font-common-base_-_font-family);
+    --paper-font-subhead_-_-webkit-font-smoothing: var(--paper-font-common-base_-_-webkit-font-smoothing);
+    --paper-font-subhead_-_font-size: 16px;
+    --paper-font-subhead_-_font-weight: 400;
+    --paper-font-subhead_-_line-height: 24px;
+    --paper-font-body1_-_font-family: var(--paper-font-common-base_-_font-family);
+    --paper-font-body1_-_-webkit-font-smoothing: var(--paper-font-common-base_-_-webkit-font-smoothing);
+    --paper-font-body1_-_font-size: 14px;
+    --paper-font-body1_-_font-weight: 400;
+    --paper-font-body1_-_line-height: 20px;
+    --paper-font-caption_-_font-family: var(--paper-font-common-base_-_font-family);
+    --paper-font-caption_-_-webkit-font-smoothing: var(--paper-font-common-base_-_-webkit-font-smoothing);
+}
+html:not(.style-scope) {
+    --primary-text-color: #212121;
+    --primary-background-color: #ffffff;
+    --disabled-text-color: #9b9b9b;
+    --divider-color: #dbdbdb;
+    --error-color: #dd2c00;
+    --primary-color: #3f51b5;
+}
+html:not(.style-scope) {
+    --google-red-500: #db4437;
+    --google-blue-500: #4285f4;
+    --google-green-500: #0f9d58;
+    --google-yellow-500: #f4b400;
+    --paper-yellow-a100: #ffff8d;
+    --dark-divider-opacity: 0.12;
+}
+html:not(.style-scope) {
+    --shadow-elevation-2dp_-_box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    --shadow-elevation-4dp_-_box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    --shadow-elevation-6dp_-_box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.4);
+    --shadow-elevation-8dp_-_box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+    --shadow-elevation-16dp_-_box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+}
+html:not(.style-scope) {
+    --layout-horizontal_-_display: flex;
+    --layout-horizontal_-_-ms-flex-direction: row;
+    --layout-horizontal_-_-webkit-flex-direction: row;
+    --layout-horizontal_-_flex-direction: row;
+    --layout-end-justified_-_-ms-flex-pack: end;
+    --layout-end-justified_-_-webkit-justify-content: flex-end;
+    --layout-end-justified_-_justify-content: flex-end;
+    --layout-fit_-_position: absolute;
+    --layout-fit_-_top: 0;
+    --layout-fit_-_right: 0;
+    --layout-fit_-_bottom: 0;
+    --layout-fit_-_left: 0;
+}
+html:not(.style-scope) {
+   #107516;
+    --yt-spec-themed-overlay-background: rgba(255, 255, 255, 0.7);
+}
+html:not(.style-scope) {
+    --t-std-body-300: rgba(0, 0, 0, 0.54);
+    --t-std-surface-200: #fafafa;
+    --t-std-surface-300: whitesmoke;
+    --t-std-surface-400: #ededed;
+    --t-primary-color: #111111;
+    --t-primary-text-color: #111111;
+    --t-hovered-text-color: hsla(0, 0%, 6.7%, 0.8);
+    --
+user agent stylesheet
+html {
+    color: -internal-root-color;
+}
+display: block;
+    margin-left: var(--yt-img-margin-left, auto);
+    margin-right: var(--yt-img-margin-right, auto);
+    max-height: var(--yt-img-max-height, none);
+    max-width: var(--yt-img-max-width, 100%);
+    border-radius: var(--yt-img-border-radius, none);
+}
+canvas, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, embed, fieldset, font, form, h1, h2, h3, h4, h5, h6, hr, i, iframe, img, ins, kbd, label, legend, li, menu, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+img[Attributes Style] {
+    width: 210px;
+}
+.yt-simple-endpoint {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--yt-endpoint-color, var(--yt-spec-text-primary));
+}
+user agent stylesheet
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+#items.yt-horizontal-list-renderer > *.yt-horizontal-list-renderer {
+    padding-right: 4px;
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+    "Alpha"; CLIENT ID
+"640323853741981721"
+[13311.322]= -4310.13
+}
+    }
+  y=axis+ "Alpha";-CLIENT SECRET;8_rvsmQ18bUgn9illnJSiMbInQMffCnf
+  }
+  x=axis+ "Alpha;-TOKEN;NjQwMzIzODUzNzQxOTgxNzIx.XcHUwg.kRvqKnqZjuq-6GZ-8cjVP6hTSfg
+  NjQwMzIzODUzNzQxOTgxNzIx.XcHUwg.kRvqKnqZjuq-6GZ-8cjVP6hTSfg
+   }}}a= (893562223.893562223)(949108719.949108719)= {""640323853741981721""){8_rvsmQ18bUgn9illnJSiMbInQMffCnf)
+   }
+     {
+}}     
+     {
+------------===================____-----33O2O3022424U3H_hjI.net
+482047329rewufb4ry2brf84r832jUhuhHHHIHubhj k38y29e9e9jdqwhd8q3ueeu98dswo29__99h
+------------===================____-----33O2O3022424U3H_hjI.net
+482047329rewufb4ry2brf84r832jUhuhHHHIHubhj k38y29e9e9jdqwhd8q3ueeu98dswo29__99h
+------------===================____-----33O2O3022424U3H_hjI.net
+482047329rewufb4ry2brf84r832jUhuhHHHIHubhj k38y29e9e9jdqwhd8q3ueeu98dswo29__99h
+------------===================____-----33O2O3022424U3H_hjI.net
+482047329rewufb4ry2brf84r832jUhuhHHHIHubhj k38y29e9e9jdqwhd8q3ueeu98dswo29__99h
+------------===================____-----33O2O3022424U3H_hjI.net
+482047329rewufb4ry2brf84r832jUhuhHHHIHubhj k38y29e9e9jdqwhd8q3ueeu98dswo29__99h
+------------===================____-----33O2O3022424U3H_hjI.net
+482047329rewufb4ry2brf84r832jUhuhHHHIHubhj k38y29e9e9jdqwhd8q3ueeu98dswo29__99h
+------------===================____-----33O2O3022424U3H_hjI.net
+482047329rewufb4ry2brf84r832jUhuhHHHIHubhj k38y29e9e9jdqwhd8q3ueeu98dswo29__99h
+ ------------===================____-----33O2O3022424U3H_hjI.net
+482047329rewufb4ry2brf84r832jUhuhHHHIHubhj k38y29e9e9jdqwhd8q3ueeu98dswo29__99h
+commandZ-="random" command x""{{{{}}}}
+}
+469200.3223
+"HackerV2
+#6853 = "whitelist"
